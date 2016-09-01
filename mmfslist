@@ -1,0 +1,35 @@
+#!/bin/bash
+
+GREP=`which grep 2>/dev/null`
+AWK=`which awk 2>/dev/null`
+SORT=`which sort 2>/dev/null`
+UNIQ=`which uniq 2>/dev/null`
+
+if [ "x${GREP}" == "x" ] ; then
+   echo "grep command not in path"
+   exit 1
+fi
+
+if [ "x${AWK}" == "x" ] ; then
+   echo "awk command not in path"
+   exit 1
+fi
+
+if [ "x${SORT}" == "x" ] ; then
+   echo "sort command not in path"
+   exit 1
+fi
+
+if [ "x${UNIQ}" == "x" ] ; then
+   echo "uniq command not in path"
+   exit 1
+fi
+
+/usr/lpp/mmfs/bin/mmlsnsd | \
+   ${GREP} -vE "^-----" | \
+   ${GREP} -vE "^ File system" | \
+   ${GREP} -vE "^$" | \
+   ${AWK} '{print($1)}' | \
+   ${GREP} -v free | \
+   ${SORT} | \
+   ${UNIQ}
