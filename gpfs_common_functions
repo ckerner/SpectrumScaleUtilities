@@ -41,3 +41,9 @@ if [ "x${CAT}" == "x" ] ; then
    exit 1
 fi
 
+SED=`which sed 2>/dev/null`
+if [ "x${SED}" == "x" ] ; then
+   echo "sed command not in path"
+   exit 1
+fi
+
