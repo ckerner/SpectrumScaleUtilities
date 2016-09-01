@@ -25,6 +25,7 @@ mmfslist:	.FORCE
 
 mmshowpool:	.FORCE
 	$(CC) -o mmshowpool $(CFLAGS) $(LIBS) $(INCL) $(OTHERINCL) $(OTHERLIB) mmshowpool.c
+	ln -s $(CURDIR)/mmshowpool $(LOCLDIR)/mmshowpool
 
 clean:
 	rm -f /etc/profile.d/gpfs_paths.sh
