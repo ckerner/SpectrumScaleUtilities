@@ -1,7 +1,11 @@
 #!/bin/bash
 
-source gpfs_common_functions
-TEMPFILE=/tmp/.server.list
+MYPROG=$0
+SRCFILE=`readlink ${MYPROG}`
+SRCDIR=`dirname ${SRCFILE}`
+
+source ${SRCDIR}/gpfs_common_functions
+TEMPFILE=/tmp/.server.list.$$
 
 /usr/lpp/mmfs/bin/mmlscluster | \
    ${GREP} -E "quorum|manager" | \
