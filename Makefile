@@ -21,6 +21,7 @@ gpfs_paths:	.FORCE
 
 misc_utils:	.FORCE
 	ln -s $(CURDIR)/gpfs_core_servers.sh $(LOCLDIR)/gpfs_core_servers.sh
+	ln -s $(CURDIR)/merge_gpfs_logs.sh $(LOCLDIR)/merge_gpfs_logs.sh
 
 mmfslist:	.FORCE
 	ln -s $(CURDIR)/mmfslist $(LOCLDIR)/mmfslist
@@ -34,6 +35,7 @@ clean:
 	rm -f $(LOCLDIR)/mmfslist
 	rm -f $(LOCLDIR)/mmshowpool
 	rm -f $(LOCLDIR)/gpfs_core_servers.sh
+	rm -f $(LOCLDIR)/merge_gpfs_logs.sh
 
 
 .FORCE:
