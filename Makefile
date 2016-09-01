@@ -13,12 +13,14 @@ CURDIR=$(shell pwd)
 LOCLDIR=/usr/local/bin
 
 
-install: gpfs_paths mmfslist mmshowpool
+install: gpfs_paths mmfslist mmshowpool misc_utils
 
 
 gpfs_paths:	.FORCE
 	cp -p $(CURDIR)/gpfs_paths.sh /etc/profile.d/gpfs_paths.sh
 
+misc_utils:	.FORCE
+	ln -s $(CURDIR)/gpfs_core_servers.sh $(LOCLDIR)/gpfs_core_servers.sh
 
 mmfslist:	.FORCE
 	ln -s $(CURDIR)/mmfslist $(LOCLDIR)/mmfslist
@@ -31,6 +33,7 @@ clean:
 	rm -f /etc/profile.d/gpfs_paths.sh
 	rm -f $(LOCLDIR)/mmfslist
 	rm -f $(LOCLDIR)/mmshowpool
+	rm -f $(LOCLDIR)/gpfs_core_servers.sh
 
 
 .FORCE:
